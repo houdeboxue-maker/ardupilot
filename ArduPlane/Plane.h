@@ -165,10 +165,6 @@ public:
 
 private:
 
-    int8_t AOA_x = 0;
-    int8_t AOA_y = 0;
-    int8_t AOA_z = 0;
-
     // key aircraft parameters passed to multiple libraries
     AP_Vehicle::FixedWing aparm;
 
@@ -784,8 +780,6 @@ private:
 
     // rudder mixing gain for differential thrust (0 - 1)
     float rudder_dt;
-
-    void send_result_MAVLink(); // using MAVLink to send the result
 
     void adjust_nav_pitch_throttle(void);
     void update_load_factor(void);

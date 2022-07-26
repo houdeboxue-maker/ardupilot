@@ -32,7 +32,6 @@
  */
 const AP_Scheduler::Task Plane::scheduler_tasks[] = {
                            // Units:   Hz      us
-    SCHED_TASK(send_result_MAVLink,     2,    400),
     SCHED_TASK(ahrs_update,           400,    400),
     SCHED_TASK(read_radio,             50,    100),
     SCHED_TASK(check_short_failsafe,   50,    100),
@@ -694,12 +693,6 @@ float Plane::tecs_hgt_afe(void)
         hgt_afe = relative_altitude;
     }
     return hgt_afe;
-}
-
-void Plane::send_result_MAVLink()
-{
-    if (plane.AOA_x != 0 || plane.AOA_y != 0 || plane.AOA_z != 0)
-        gcs().send_text(MAV_SEVERITY_INFO, "%.2d%.2d%.2d", plane.AOA_x, plane.AOA_y, plane.AOA_z);
 }
 
 #if OSD_ENABLED == ENABLED
