@@ -212,6 +212,7 @@ const AP_Scheduler::Task Copter::scheduler_tasks[] = {
 constexpr int8_t Copter::_failsafe_priorities[7];
 
 void Copter::setup()
+
 {
     // Load the default values of variables listed in var_info[]s
     AP_Param::setup_sketch_defaults();
