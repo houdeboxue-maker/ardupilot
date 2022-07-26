@@ -1273,6 +1273,13 @@ void GCS_MAVLINK_Plane::handleMessage(const mavlink_message_t &msg)
 
     case MAVLINK_MSG_ID_SET_POSITION_TARGET_GLOBAL_INT:
     {
+        mavlink_set_position_target_global_int_t pos_target;
+        mavlink_msg_set_position_target_global_int_decode(&msg, &pos_target);
+
+        plane.AOA_x = (int)pos_target.vx;
+        plane.AOA_y = (int)pos_target.vy;
+        plane.AOA_z = (int)pos_target.vz;
+
         // Only want to allow companion computer position control when
         // in a certain mode to avoid inadvertently sending these
         // kinds of commands when the autopilot is responding to problems
@@ -1284,8 +1291,6 @@ void GCS_MAVLINK_Plane::handleMessage(const mavlink_message_t &msg)
             break;
         }
 
-        mavlink_set_position_target_global_int_t pos_target;
-        mavlink_msg_set_position_target_global_int_decode(&msg, &pos_target);
         // Unexpectedly, the mask is expecting "ones" for dimensions that should
         // be IGNORNED rather than INCLUDED.  See mavlink documentation of the
         // SET_POSITION_TARGET_GLOBAL_INT message, type_mask field.
