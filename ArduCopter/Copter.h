@@ -236,6 +236,7 @@ public:
     friend class ModeThrow;
     friend class ModeZigZag;
     friend class ModeAutorotate;
+    friend class ModeDrawStar;
 
     Copter(void);
 
@@ -948,6 +949,9 @@ private:
 #if MODE_FOLLOW_ENABLED == ENABLED
     ModeFollow mode_follow;
 #endif
+#if MODE_DRAWSTAR_ENABLED == ENABLED
+    ModeDrawStar mode_drawstar;
+#endif
 #if MODE_GUIDED_ENABLED == ENABLED
     ModeGuided mode_guided;
 #endif
@@ -987,7 +991,7 @@ private:
 #if !HAL_MINIMIZE_FEATURES && OPTFLOW == ENABLED
     ModeFlowHold mode_flowhold;
 #endif
-#if MODE_ZIGZAG_ENABLED == ENABLED
+#if MODE_ZIGZAG_ENABLED == ENABLED    
     ModeZigZag mode_zigzag;
 #endif
 #if MODE_AUTOROTATE_ENABLED == ENABLED
