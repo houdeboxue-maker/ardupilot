@@ -173,6 +173,7 @@ void Plane::ahrs_update()
   update 50Hz speed/height controller
  */
 void Plane::update_speed_height(void)
+
 {
     if (auto_throttle_mode) {
 	    // Call TECS 50Hz update. Note that we call this regardless of
@@ -291,6 +292,7 @@ void Plane::one_second_loop()
             // reset the landing altitude correction
             landing.alt_offset = 0;
     }
+    gcs().send_text(MAV_SEVERITY_CRITICAL,"Current altitude:%.1fm",plane.relative_ground_altitude(1)/100.0f);
 }
 
 void Plane::compass_save()
