@@ -32,6 +32,7 @@
  */
 const AP_Scheduler::Task Plane::scheduler_tasks[] = {
                            // Units:   Hz      us
+    SCHED_TASK(Log_Write_Vel_Automode, 50,    400),
     SCHED_TASK(ahrs_update,           400,    400),
     SCHED_TASK(read_radio,             50,    100),
     SCHED_TASK(check_short_failsafe,   50,    100),
@@ -109,6 +110,12 @@ const AP_Scheduler::Task Plane::scheduler_tasks[] = {
 };
 
 constexpr int8_t Plane::_failsafe_priorities[7];
+
+void Plane::Log_Write_Vel_Automode()
+{
+    if (plane.control_mode == &mode_auto)
+        Log_Write_Vel();
+}
 
 void Plane::setup() 
 {

@@ -79,6 +79,24 @@ void Plane::Log_Write_Startup(uint8_t type)
     logger.WriteCriticalBlock(&pkt, sizeof(pkt));
 }
 
+struct PACKED log_Velocity {
+    LOG_PACKET_HEADER;
+    uint64_t time_us;
+    float actual_spd;
+    float set_spd;
+};
+
+void Plane::Log_Write_Vel()
+{
+    struct log_Velocity pkt = {
+        LOG_PACKET_HEADER_INIT(LOG_VEL_MSG),
+        time_us         : AP_HAL::micros64(),
+        actual_spd      : gps.ground_speed(),
+        set_spd         : g2.set_speed_cm/100.0f
+    };
+    logger.WriteBlock(&pkt, sizeof(pkt));
+}
+
 struct PACKED log_Control_Tuning {
     LOG_PACKET_HEADER;
     uint64_t time_us;

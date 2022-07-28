@@ -801,6 +801,8 @@ private:
     void Log_Write_Vehicle_Startup_Messages();
     void Log_Write_AOA_SSA();
     void Log_Write_AETR();
+    void Log_Write_Vel();
+    void Log_Write_Vel_Automode();
 
     void load_parameters(void);
     void convert_mixers(void);

@@ -572,6 +572,8 @@ public:
 
     // min initial climb in RTL
     AP_Int16        rtl_climb_min;
+
+    AP_Float set_speed_cm;
 };
 
 extern const AP_Param::Info var_info[];
