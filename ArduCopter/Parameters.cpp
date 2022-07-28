@@ -907,7 +907,7 @@ const AP_Param::GroupInfo ParametersG2::var_info[] = {
 #if AUTOTUNE_ENABLED == ENABLED
     // @Group: AUTOTUNE_
     // @Path: ../libraries/AC_AutoTune/AC_AutoTune.cpp
-    AP_SUBGROUPPTR(autotune_ptr, "AUTOTUNE_",  29, ParametersG2, AutoTune),
+    AP_SUBGROUPPTR(autotune_ptr, "AUTOTUNE_", 29, ParametersG2, AutoTune),
 #endif
 
 #ifdef ENABLE_SCRIPTING
@@ -961,9 +961,9 @@ const AP_Param::GroupInfo ParametersG2::var_info[] = {
     AP_SUBGROUPINFO(arot, "AROT_", 37, ParametersG2, AC_Autorotation),
 #endif
 
+    AP_GROUPINFO("STAR_R_CM", 38, ParametersG2, star_radius_cm, 1000),
 
-
-    AP_GROUPEND
+    AP_GROUPEND    
 };
 
 // These param descriptions are here so that users of beta Mission Planner (which uses the master branch as its source of descriptions)
